@@ -15,7 +15,9 @@
     box-shadow: 0 0 5px grey;
     border-radius: 10px;
     cursor: pointer;
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.9)), url(../../models/BMW.PNG);
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.9));
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     height: 250px;
 }
