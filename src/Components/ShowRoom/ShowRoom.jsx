@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './ShowRoom.css';
 import { useParams } from 'react-router-dom';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
 import { ItemList } from '../../models/itemlist';
+import * as OrbitControls from 'three-orbitcontrols'; 
 
 export const ShowRoom = (props) => {
     
@@ -29,38 +31,62 @@ function showTheModel(id) {
     // setting up the camera
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 
-    // setting up the GLTF Loader to Load GLB models
-    // const loader = new GLTFLoader();
-    // loader.load(getModelPath(id), (gltf) => {
-    //     scene.add(gltf.scene);
-    // });
+    // setting up OBJ Loader
+    const materialLoader = new MTLLoader();
+    materialLoader.setResourcePath('/');
+    materialLoader.setPath('/');
+    materialLoader.load(getModelPath(id, 'material'), materials => {
+        materials.preload();
+        const loader = new OBJLoader();
+        loader.setMaterials(materials);
+        loader.setPath('/');
+        loader.load(getModelPath(id, 'model'), object => {
+            scene.add(object);
+        });
+    });
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x0000ff });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    // setting up the lights
+    const light1 = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
+    light1.position.set(-100, 0, 100);
+    scene.add(light1);
+
+    const light2 = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 1.0);
+    light1.position.set(100, 0, 100);
+    scene.add(light2);
+
+    const light3 = new THREE.DirectionalLight(0xffffff, 1.0);
+    light3.position.set(100, 0, 100).normalize();
+    scene.add(light3);
 
     // setting the camera position
     camera.position.x = 0.1;
     camera.position.y = 1;
     camera.position.z = 5;
 
+    
+    
     // setting up the renderer
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0xffffff, 1);
     document.getElementById('showroom').append(renderer.domElement);
+    
+    // setting up Orbital Controls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.campingFactor = 0.25;
+    controls.enableZoom = true;
 
     // setting up the animate function
     var animate = function () {
         requestAnimationFrame( animate );
-        cube.rotation.y += 0.03;
+        controls.update();
         renderer.render( scene, camera );
     };
     animate();
 }
 
-function getModelPath(id) {
+function getModelPath(id, key) {
     const obj = ItemList.find(item => item.id.toString() === id);
-    return `../../models/${obj.model}`;
+    return (key === 'model') ? obj.model : obj.material;
 }

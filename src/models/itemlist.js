@@ -5,19 +5,22 @@ export const ItemList = [
     {
         id: 1,
         name: 'Car',
-        model: 'bmw.glb',
+        model: 'bmw.obj',
+        material: 'bmwmtl.mtl',
         image: bmwUrl
     },
     {
         id: 2,
         name: 'Earth',
-        model: 'earth.3ds',
+        model: 'bmw.obj',
+        material: 'bmwmtl.mtl',
         image: earthUrl
     },
     {
         id: 3,
         name: 'Box',
-        model: 'bmw.3ds',
+        model: 'bmw.obj',
+        material: 'bmwmtl.mtl',
         image: boxUrl
     }
 ]
