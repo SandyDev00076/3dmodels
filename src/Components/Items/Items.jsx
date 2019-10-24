@@ -15,12 +15,11 @@ export const ItemsPage = (props) => {
             <br/>
             <div className="itemspane">
                 {ItemList.map(obj => {
-                    let bgStyle = {
-                        backgroundImage: 'url(' + obj.image + ')'
-                    };
-
                     return (
-                        <div className="item" key={obj.id} style={bgStyle} onClick={() => props.history.push(`/model/${obj.id}`)}>
+                        <div className="item" key={obj.id} style={{
+                                background: 'linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.9)) no-repeat, url(' + obj.image + ') center',
+                                backgroundSize: 'cover'
+                            }} onClick={() => props.history.push(`/model/${obj.id}`)}>
                             <h4 className="itemname">{obj.name}</h4>
                         </div>
                     )
