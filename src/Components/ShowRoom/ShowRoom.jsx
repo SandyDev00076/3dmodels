@@ -38,7 +38,7 @@ function showTheModel(id) {
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshBasicMaterial({ color: 0x0000ff });
     const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    scene.add(cube); // made some changes
 
     // setting the camera position
     camera.position.x = 0.1;
