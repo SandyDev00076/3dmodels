@@ -1,5 +1,6 @@
 import bmwUrl from '../models/BMW.PNG';
 import earthUrl from '../models/EARTH.jpg';
+import boxUrl from '../models/box.jpg';
 export const ItemList = [
     {
         id: 1,
@@ -17,6 +18,6 @@ export const ItemList = [
         id: 3,
         name: 'Box',
         model: 'bmw.3ds',
-        image: bmwUrl
+        image: boxUrl
     }
 ]

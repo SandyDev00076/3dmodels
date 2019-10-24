@@ -54,7 +54,7 @@ function showTheModel(id) {
     // setting up the animate function
     var animate = function () {
         requestAnimationFrame( animate );
-        cube.rotation.y += 0.05;
+        cube.rotation.y += 0.03;
         renderer.render( scene, camera );
     };
     animate();
