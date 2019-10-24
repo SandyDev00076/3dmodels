@@ -1,0 +1,33 @@
+.itemspage {
+    padding: 1em;
+}
+
+.itemspane {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: auto auto auto;
+}
+
+.item {
+    padding: 1em;
+    text-transform: uppercase;
+    cursor: default;
+    box-shadow: 0 0 5px grey;
+    border-radius: 10px;
+    cursor: pointer;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.9)), url(../../models/BMW.PNG);
+    background-size: cover;
+    height: 250px;
+}
+
+.item:hover {
+    box-shadow: 0 0 8px grey;
+    transform: scale(1.01);
+}
+
+.itemname {
+    color: #333;
+    font-size: 0.9em;
+    font-weight: bold;
+    font-family: sans-serif;
+}

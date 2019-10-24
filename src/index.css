@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.protitle {
+  padding: 0.5em;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: sans-serif;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  cursor: default;
+  transition: letter-spacing 0.5s;
+  text-shadow: 0 0 5px grey;
+}
+
+.protitle:hover {
+  letter-spacing: 10px;
+}
