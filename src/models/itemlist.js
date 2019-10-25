@@ -12,15 +12,15 @@ export const ItemList = [
     {
         id: 2,
         name: 'Earth',
-        model: 'bmw.obj',
-        material: 'bmwmtl.mtl',
+        model: 'world.obj',
+        material: 'world.mtl',
         image: earthUrl
     },
     {
         id: 3,
         name: 'Box',
-        model: 'bmw.obj',
-        material: 'bmwmtl.mtl',
+        model: 'cardboard.obj',
+        material: 'cardboard.mtl',
         image: boxUrl
     }
 ]
